@@ -68,7 +68,7 @@ if __name__ == "__main__":
     RATIO = 0.8
     PATIENCE = 20 # 容忍度
     BATCH_SIZE = 32
-    EPOCHS = 30
+    EPOCHS = 200
     
     # load training data
     df1 = pd.read_csv(args.training, header=None, usecols=[0, 1, 2, 3], names=["open", "high", "low", "close"])
@@ -120,8 +120,8 @@ if __name__ == "__main__":
         validation_data=(x_test, y_test), batch_size=BATCH_SIZE, epochs=EPOCHS)
 
     fig, ax = plt.subplots()
-    ax.plot(history['loss'], label='loss')
-    ax.plot(history['mse'], label='mse')
+    ax.plot(history.history['loss'], label='loss')
+    ax.plot(history.history['mse'], label='mse')
     ax.set_ylabel('result')
     ax.set_xlabel('epoch')
     ax.set_title('history')
